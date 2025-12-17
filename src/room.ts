@@ -1,6 +1,6 @@
 export type RoomCode = string;
 
-export type Role = "display" | "controller" | "spectator";
+export type Role = "host" | "player";
 
 export interface Player {
   id: string;

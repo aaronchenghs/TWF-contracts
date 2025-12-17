@@ -1,5 +1,5 @@
 export declare type RoomCode = string;
-export declare type Role = "display" | "controller" | "spectator";
+export declare type Role = "host" | "player";
 export interface Player {
     id: string;
     name: string;
