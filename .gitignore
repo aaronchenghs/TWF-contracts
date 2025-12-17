@@ -2,7 +2,6 @@
 # Node / TypeScript
 # ===============================
 node_modules/
-dist/
 build/
 coverage/
 
