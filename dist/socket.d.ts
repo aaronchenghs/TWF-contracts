@@ -1,5 +1,5 @@
 import type { RoomCode, Role, RoomPublicState } from "./room";
-declare type RoomJoinPayload = {
+export declare type RoomJoinPayload = {
     code: RoomCode;
     role: "host";
 } | {
@@ -23,4 +23,3 @@ export interface ServerToClientEvents {
     "room:state": (state: RoomPublicState) => void;
     "room:error": (message: string) => void;
 }
-export {};

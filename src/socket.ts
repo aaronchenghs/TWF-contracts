@@ -1,6 +1,6 @@
 import type { RoomCode, Role, RoomPublicState } from "./room";
 
-type RoomJoinPayload =
+export type RoomJoinPayload =
   | { code: RoomCode; role: "host" }
   | { code: RoomCode; role: "player"; name: string };
 
