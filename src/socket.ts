@@ -1,4 +1,11 @@
-import type { RoomCode, Role, RoomPublicState } from "./room";
+import type {
+  RoomCode,
+  Role,
+  RoomPublicState,
+  TierSetDefinition,
+  TierSetId,
+  TierSetSummary,
+} from "./room";
 
 export type RoomJoinPayload =
   | { code: RoomCode; role: "host" }
@@ -8,10 +15,17 @@ export interface ClientToServerEvents {
   "room:create": (payload: { role: Role }) => void;
   "room:join": (payload: RoomJoinPayload) => void;
   "room:start": (payload: { code: RoomCode }) => void;
+
+  "tierSets:list": () => void;
+  "tierSets:get": (payload: { id: TierSetId }) => void;
+  "room:setTierSet": (payload: { tierSetId: TierSetId }) => void;
 }
 
 export interface ServerToClientEvents {
   "room:created": (payload: { code: RoomCode }) => void;
   "room:state": (state: RoomPublicState) => void;
   "room:error": (message: string) => void;
+
+  "tierSets:listed": (payload: { tierSets: TierSetSummary[] }) => void;
+  "tierSets:got": (payload: { tierSet: TierSetDefinition }) => void;
 }

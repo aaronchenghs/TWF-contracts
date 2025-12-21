@@ -6,16 +6,41 @@ export interface Player {
     joinedAt: number;
 }
 export declare type GamePhase = "LOBBY" | "DISCUSS" | "VOTE" | "RESULTS";
-export declare type TierId = "S" | "A" | "B" | "C" | "D";
 export interface RoomPublicState {
     code: RoomCode;
     phase: GamePhase;
     players: Player[];
     currentTurnPlayerId: string | null;
-    tiers: Record<TierId, string[]>;
-    currentItem: string | null;
+    tiers: Record<TierId, TierItemId[]>;
+    currentItem: TierItemId | null;
     timers: {
         discussEndsAt: number | null;
         voteEndsAt: number | null;
     };
+    tierSetId: TierSetId | null;
 }
+export declare type TierSetId = string;
+export declare type TierId = string;
+export declare type TierItemId = string;
+export declare type Tier = {
+    id: TierId;
+    name: string;
+};
+export declare type TierItem = {
+    id: TierItemId;
+    name: string;
+    imageSrc: string;
+};
+export declare type TierSetSummary = {
+    id: TierSetId;
+    title: string;
+    description?: string;
+    coverImageSrc?: string;
+};
+export declare type TierSetDefinition = {
+    id: TierSetId;
+    title: string;
+    description?: string;
+    tiers: Tier[];
+    items: TierItem[];
+};
