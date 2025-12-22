@@ -27,6 +27,7 @@ export interface ServerToClientEvents {
     "room:created": (payload: {
         code: RoomCode;
     }) => void;
+    "room:closed": () => void;
     "room:state": (state: RoomPublicState) => void;
     "room:error": (message: string) => void;
     "tierSets:listed": (payload: {
