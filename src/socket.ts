@@ -15,6 +15,7 @@ export interface ClientToServerEvents {
   "room:create": (payload: { role: Role }) => void;
   "room:join": (payload: RoomJoinPayload) => void;
   "room:start": (payload: { code: RoomCode }) => void;
+  "room:close": () => void;
 
   "tierSets:list": () => void;
   "tierSets:get": (payload: { id: TierSetId }) => void;
