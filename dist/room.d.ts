@@ -5,18 +5,46 @@ export interface Player {
     name: string;
     joinedAt: number;
 }
-export declare type GamePhase = "LOBBY" | "DISCUSS" | "VOTE" | "RESULTS";
+export declare type VoteValue = -1 | 0 | 1;
+export declare type GamePhase = "LOBBY" | "STARTING" | "REVEAL" | "PLACE" | "VOTE" | "RESOLVE" | "FINISHED";
+export declare type PlayerId = Player["id"];
+export interface RoomTimers {
+    buildEndsAt: number | null;
+    revealEndsAt: number | null;
+    placeEndsAt: number | null;
+    voteEndsAt: number | null;
+}
+export declare type VoteMap = Record<PlayerId, VoteValue>;
 export interface RoomPublicState {
     code: RoomCode;
     phase: GamePhase;
     players: Player[];
-    currentTurnPlayerId: string | null;
+    /**
+     * Player IDs in turn order. Empty in LOBBY.
+     */
+    turnOrderPlayerIds: PlayerId[];
+    /**
+     * Index into turnOrderPlayerIds. 0 in LOBBY.
+     */
+    turnIndex: number;
+    /**
+     * Current player’s turn (must be one of turnOrderPlayerIds when phase != LOBBY/FINISHED).
+     */
+    currentTurnPlayerId: PlayerId | null;
     tiers: Record<TierId, TierItemId[]>;
+    /**
+     * Item currently being revealed/placed/voted/resolved.
+     */
     currentItem: TierItemId | null;
-    timers: {
-        discussEndsAt: number | null;
-        voteEndsAt: number | null;
-    };
+    /**
+     * Votes from non-turn players for the currentItem.
+     * Convention:
+     *  -1 = drift up
+     *   0 = agree
+     *   1 = drift down
+     */
+    votes: VoteMap;
+    timers: RoomTimers;
     tierSetId: TierSetId | null;
 }
 export declare type TierSetId = string;
