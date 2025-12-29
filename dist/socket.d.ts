@@ -1,17 +1,12 @@
-import type { RoomCode, Role, RoomPublicState, TierSetDefinition, TierSetId, TierSetSummary } from "./room";
-export declare type RoomJoinPayload = {
-    code: RoomCode;
-    role: "host";
-} | {
-    code: RoomCode;
-    role: "player";
-    name: string;
-};
+import type { RoomCode, Role, RoomPublicState, TierSetDefinition, TierSetId, TierSetSummary, TierId, VoteValue, RoomJoinPayload } from "./room";
 export interface ClientToServerEvents {
     "room:create": (payload: {
         role: Role;
     }) => void;
     "room:join": (payload: RoomJoinPayload) => void;
+    "room:setTierSet": (payload: {
+        tierSetId: TierSetId;
+    }) => void;
     "room:start": (payload: {
         code: RoomCode;
     }) => void;
@@ -20,8 +15,11 @@ export interface ClientToServerEvents {
     "tierSets:get": (payload: {
         id: TierSetId;
     }) => void;
-    "room:setTierSet": (payload: {
-        tierSetId: TierSetId;
+    "game:place": (payload: {
+        tierId: TierId;
+    }) => void;
+    "game:vote": (payload: {
+        vote: VoteValue;
     }) => void;
 }
 export interface ServerToClientEvents {

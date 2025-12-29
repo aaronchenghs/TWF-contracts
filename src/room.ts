@@ -56,6 +56,11 @@ export interface RoomPublicState {
    */
   currentItem: TierItemId | null;
   /**
+   * Tier set by the current player whose turn it is, before a vote takes place to drift.
+   */
+  pendingTierId: TierId | null;
+
+  /**
    * Votes from non-turn players for the currentItem.
    * Convention:
    *  -1 = drift up

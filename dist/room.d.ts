@@ -1,5 +1,13 @@
 export declare type RoomCode = string;
 export declare type Role = "host" | "player";
+export declare type RoomJoinPayload = {
+    code: RoomCode;
+    role: "host";
+} | {
+    code: RoomCode;
+    role: "player";
+    name: string;
+};
 export interface Player {
     id: string;
     name: string;
@@ -36,6 +44,10 @@ export interface RoomPublicState {
      * Item currently being revealed/placed/voted/resolved.
      */
     currentItem: TierItemId | null;
+    /**
+     * Tier set by the current player whose turn it is, before a vote takes place to drift.
+     */
+    pendingTierId: TierId | null;
     /**
      * Votes from non-turn players for the currentItem.
      * Convention:
