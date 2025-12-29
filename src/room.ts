@@ -20,6 +20,8 @@ export type GamePhase =
   | "REVEAL"
   | "PLACE"
   | "VOTE"
+  | "RESULTS"
+  | "DRIFT"
   | "RESOLVE"
   | "FINISHED";
 
