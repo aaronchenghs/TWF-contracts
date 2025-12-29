@@ -52,7 +52,12 @@ export interface RoomPublicState {
   code: RoomCode;
   phase: GamePhase;
   players: Player[];
+  timers: RoomTimers;
+
+  tierSetId: TierSetId | null;
   tiers: Record<TierId, TierItemId[]>;
+  tierOrder: TierId[];
+
   /**
    * Player IDs in turn order. Empty in LOBBY.
    */
@@ -85,8 +90,6 @@ export interface RoomPublicState {
    * Most recent vote resolution
    */
   lastResolution: TurnResolution | null;
-  timers: RoomTimers;
-  tierSetId: TierSetId | null;
 }
 
 // #region Tier Set Definitions
