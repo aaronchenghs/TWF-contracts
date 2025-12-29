@@ -2,6 +2,10 @@ export type RoomCode = string;
 
 export type Role = "host" | "player";
 
+export type RoomJoinPayload =
+  | { code: RoomCode; role: "host" }
+  | { code: RoomCode; role: "player"; name: string };
+
 export interface Player {
   id: string;
   name: string;
