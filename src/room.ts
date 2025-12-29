@@ -25,11 +25,25 @@ export type GamePhase =
 
 export type PlayerId = Player["id"];
 
+export type TurnResolution = {
+  up: number;
+  down: number;
+  agree: number;
+  voters: number;
+  eligible: number;
+  score: number;
+  driftDelta: number;
+  fromTierId: TierId;
+  toTierId: TierId;
+};
+
 export interface RoomTimers {
   buildEndsAt: number | null;
   revealEndsAt: number | null;
   placeEndsAt: number | null;
   voteEndsAt: number | null;
+  resultsEndsAt: number | null;
+  driftEndsAt: number | null;
 }
 
 export type VoteMap = Record<PlayerId, VoteValue>;
@@ -38,6 +52,7 @@ export interface RoomPublicState {
   code: RoomCode;
   phase: GamePhase;
   players: Player[];
+  tiers: Record<TierId, TierItemId[]>;
   /**
    * Player IDs in turn order. Empty in LOBBY.
    */
@@ -50,7 +65,6 @@ export interface RoomPublicState {
    * Current player’s turn (must be one of turnOrderPlayerIds when phase != LOBBY/FINISHED).
    */
   currentTurnPlayerId: PlayerId | null;
-  tiers: Record<TierId, TierItemId[]>;
   /**
    * Item currently being revealed/placed/voted/resolved.
    */
@@ -59,7 +73,6 @@ export interface RoomPublicState {
    * Tier set by the current player whose turn it is, before a vote takes place to drift.
    */
   pendingTierId: TierId | null;
-
   /**
    * Votes from non-turn players for the currentItem.
    * Convention:
@@ -68,6 +81,10 @@ export interface RoomPublicState {
    *   1 = drift down
    */
   votes: VoteMap;
+  /**
+   * Most recent vote resolution
+   */
+  lastResolution: TurnResolution | null;
   timers: RoomTimers;
   tierSetId: TierSetId | null;
 }
