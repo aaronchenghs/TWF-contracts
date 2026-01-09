@@ -1,4 +1,4 @@
-import type { RoomCode, Role, RoomPublicState, TierSetDefinition, TierSetId, TierSetSummary, TierId, VoteValue, RoomJoinPayload } from "./room";
+import type { RoomCode, Role, RoomPublicState, TierSetDefinition, TierSetId, TierSetSummary, TierId, VoteValue, RoomJoinPayload, PlayerId } from "./room";
 export interface ClientToServerEvents {
     "room:create": (payload: {
         role: Role;
@@ -29,6 +29,9 @@ export interface ServerToClientEvents {
     "room:closed": () => void;
     "room:state": (state: RoomPublicState) => void;
     "room:error": (message: string) => void;
+    "room:joined": (payload: {
+        playerId: PlayerId;
+    }) => void;
     "tierSets:listed": (payload: {
         tierSets: TierSetSummary[];
     }) => void;

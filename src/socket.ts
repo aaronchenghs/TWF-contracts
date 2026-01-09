@@ -8,6 +8,7 @@ import type {
   TierId,
   VoteValue,
   RoomJoinPayload,
+  PlayerId,
 } from "./room";
 
 export interface ClientToServerEvents {
@@ -29,6 +30,8 @@ export interface ServerToClientEvents {
   "room:closed": () => void;
   "room:state": (state: RoomPublicState) => void;
   "room:error": (message: string) => void;
+
+  "room:joined": (payload: { playerId: PlayerId }) => void;
 
   "tierSets:listed": (payload: { tierSets: TierSetSummary[] }) => void;
   "tierSets:got": (payload: { tierSet: TierSetDefinition }) => void;
