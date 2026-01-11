@@ -89,6 +89,7 @@ export declare type TierItemId = string;
 export declare type Tier = {
     id: TierId;
     name: string;
+    color: string;
 };
 export declare type TierItem = {
     id: TierItemId;

@@ -110,6 +110,7 @@ export type TierItemId = string;
 export type Tier = {
   id: TierId;
   name: string;
+  color: string;
 };
 
 export type TierItem = {
