@@ -92,6 +92,13 @@ export interface RoomPublicState {
    * Most recent vote resolution
    */
   lastResolution: TurnResolution | null;
+
+  /**
+   * Debug options
+   */
+  debug?: {
+    paused?: boolean;
+  };
 }
 
 // #region Tier Set Definitions

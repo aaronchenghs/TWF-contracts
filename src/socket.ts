@@ -24,6 +24,7 @@ export interface ClientToServerEvents {
   "game:place": (payload: { tierId: TierId }) => void;
   "game:vote": (payload: { vote: VoteValue }) => void;
 
+  "debug:togglePause": () => void;
   "debug:next": () => void;
   "debug:prev": () => void;
 }
