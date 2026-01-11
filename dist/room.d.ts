@@ -44,9 +44,11 @@ export interface RoomPublicState {
     tierSetId: TierSetId | null;
     /** Keeps track of items placed in tiers */
     tiers: Record<TierId, TierItemId[]>;
+    tierOrder: TierId[];
     /** Communicates actual info about the tiers themselves */
     tierMetaById?: Record<TierId, Tier>;
-    tierOrder: TierId[];
+    /** Communicates actual info about the items themselves */
+    itemMetaById?: Record<TierItemId, TierItem>;
     /**
      * Player IDs in turn order. Empty in LOBBY.
      */
