@@ -57,7 +57,10 @@ export interface RoomPublicState {
   timers: RoomTimers;
 
   tierSetId: TierSetId | null;
+  /** Keeps track of items placed in tiers */
   tiers: Record<TierId, TierItemId[]>;
+  /** Communicates actual info about the tiers themselves */
+  tierMetaById?: Record<TierId, Tier>;
   tierOrder: TierId[];
 
   /**
