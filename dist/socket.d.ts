@@ -21,6 +21,8 @@ export interface ClientToServerEvents {
     "game:vote": (payload: {
         vote: VoteValue;
     }) => void;
+    "debug:next": () => void;
+    "debug:prev": () => void;
 }
 export interface ServerToClientEvents {
     "room:created": (payload: {
