@@ -76,6 +76,12 @@ export interface RoomPublicState {
      * Most recent vote resolution
      */
     lastResolution: TurnResolution | null;
+    /**
+     * Debug options
+     */
+    debug?: {
+        paused?: boolean;
+    };
 }
 export declare type TierSetId = string;
 export declare type TierId = string;
