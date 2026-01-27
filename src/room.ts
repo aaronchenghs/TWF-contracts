@@ -14,6 +14,7 @@ export interface Player {
   id: string;
   name: string;
   joinedAt: number;
+  connected?: boolean;
 }
 
 export type VoteValue = -1 | 0 | 1;

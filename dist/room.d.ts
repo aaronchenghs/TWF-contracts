@@ -11,6 +11,7 @@ export interface Player {
     id: string;
     name: string;
     joinedAt: number;
+    connected?: boolean;
 }
 export declare type VoteValue = -1 | 0 | 1;
 export declare type GamePhase = "LOBBY" | "STARTING" | "REVEAL" | "PLACE" | "VOTE" | "RESULTS" | "DRIFT" | "RESOLVE" | "FINISHED";
