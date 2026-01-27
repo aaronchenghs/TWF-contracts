@@ -1,10 +1,14 @@
 export type RoomCode = string;
+export type ClientId = string;
 
 export type Role = "host" | "player";
 
-export type RoomJoinPayload =
-  | { code: RoomCode; role: "host" }
-  | { code: RoomCode; role: "player"; name: string };
+export type RoomJoinPayload = {
+  code: RoomCode;
+  role: Role;
+  name?: string;
+  clientId: ClientId;
+};
 
 export interface Player {
   id: string;
@@ -26,6 +30,11 @@ export type GamePhase =
   | "FINISHED";
 
 export type PlayerId = Player["id"];
+
+export type JoinRoomResult = {
+  resumed: boolean;
+  canonicalName?: string;
+};
 
 export type TurnResolution = {
   up: number;
