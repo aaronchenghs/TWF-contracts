@@ -1,12 +1,11 @@
 export declare type RoomCode = string;
+export declare type ClientId = string;
 export declare type Role = "host" | "player";
 export declare type RoomJoinPayload = {
     code: RoomCode;
-    role: "host";
-} | {
-    code: RoomCode;
-    role: "player";
-    name: string;
+    role: Role;
+    name?: string;
+    clientId: ClientId;
 };
 export interface Player {
     id: string;
@@ -16,6 +15,10 @@ export interface Player {
 export declare type VoteValue = -1 | 0 | 1;
 export declare type GamePhase = "LOBBY" | "STARTING" | "REVEAL" | "PLACE" | "VOTE" | "RESULTS" | "DRIFT" | "RESOLVE" | "FINISHED";
 export declare type PlayerId = Player["id"];
+export declare type JoinRoomResult = {
+    resumed: boolean;
+    canonicalName?: string;
+};
 export declare type TurnResolution = {
     up: number;
     down: number;
