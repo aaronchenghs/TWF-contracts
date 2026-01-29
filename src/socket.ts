@@ -15,6 +15,7 @@ export interface ClientToServerEvents {
   "room:create": (payload: { role: Role }) => void;
   "room:join": (payload: RoomJoinPayload) => void;
   "room:setTierSet": (payload: { tierSetId: TierSetId }) => void;
+  "room:bootPlayerFromLobby": (payload: { playerId: PlayerId }) => void;
   "room:start": (payload: { code: RoomCode }) => void;
   "room:close": () => void;
 
@@ -33,6 +34,7 @@ export interface ServerToClientEvents {
   "room:created": (payload: { code: RoomCode }) => void;
   "room:closed": () => void;
   "room:state": (state: RoomPublicState) => void;
+  "room:kicked": () => void;
   "room:error": (message: string) => void;
 
   "room:joined": (payload: { playerId: PlayerId }) => void;

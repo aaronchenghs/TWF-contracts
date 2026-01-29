@@ -7,6 +7,9 @@ export interface ClientToServerEvents {
     "room:setTierSet": (payload: {
         tierSetId: TierSetId;
     }) => void;
+    "room:bootPlayerFromLobby": (payload: {
+        playerId: PlayerId;
+    }) => void;
     "room:start": (payload: {
         code: RoomCode;
     }) => void;
@@ -31,6 +34,7 @@ export interface ServerToClientEvents {
     }) => void;
     "room:closed": () => void;
     "room:state": (state: RoomPublicState) => void;
+    "room:kicked": () => void;
     "room:error": (message: string) => void;
     "room:joined": (payload: {
         playerId: PlayerId;
