@@ -22,7 +22,6 @@ export type VoteValue = -1 | 0 | 1;
 export type GamePhase =
   | "LOBBY"
   | "STARTING"
-  | "REVEAL"
   | "PLACE"
   | "VOTE"
   | "RESULTS"

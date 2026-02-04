@@ -14,7 +14,7 @@ export interface Player {
     connected?: boolean;
 }
 export declare type VoteValue = -1 | 0 | 1;
-export declare type GamePhase = "LOBBY" | "STARTING" | "REVEAL" | "PLACE" | "VOTE" | "RESULTS" | "DRIFT" | "RESOLVE" | "FINISHED";
+export declare type GamePhase = "LOBBY" | "STARTING" | "PLACE" | "VOTE" | "RESULTS" | "DRIFT" | "RESOLVE" | "FINISHED";
 export declare type PlayerId = Player["id"];
 export declare type JoinRoomResult = {
     resumed: boolean;
