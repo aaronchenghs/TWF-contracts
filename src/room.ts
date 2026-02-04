@@ -50,7 +50,6 @@ export type TurnResolution = {
 
 export interface RoomTimers {
   buildEndsAt: number | null;
-  revealEndsAt: number | null;
   placeEndsAt: number | null;
   voteEndsAt: number | null;
   resultsEndsAt: number | null;
