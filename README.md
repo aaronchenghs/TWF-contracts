@@ -3,6 +3,7 @@
 Shared contract package for TWF client/server communication and public room state.
 
 This package defines:
+
 - Socket event names and payload types
 - Public game/room models
 - Shared protocol constants
@@ -11,6 +12,7 @@ This package defines:
 ## Who this is for
 
 Use this repo if you:
+
 - Build TWF backend socket handlers
 - Build TWF frontend socket consumers
 - Need one source of truth for protocol changes
@@ -20,12 +22,14 @@ Use this repo if you:
 This package should contain only cross-service contract concerns.
 
 Include:
+
 - Public state models consumed by both frontend and backend
 - Socket event interfaces (`ClientToServerEvents`, `ServerToClientEvents`)
 - Cross-service constants (`CODE_LENGTH`, `MAX_NAME_LENGTH`, `LOBBY_CAPACITY`)
 - Stable shared regex (`REGEX.GUID`)
 
 Do not include:
+
 - Database schemas
 - Server-only internal state
 - Business logic/state transitions
@@ -89,7 +93,10 @@ This compiles `src/*` into `dist/*` and emits declaration files.
 
 ```ts
 import { Server } from "socket.io";
-import type { ClientToServerEvents, ServerToClientEvents } from "@twf/contracts";
+import type {
+  ClientToServerEvents,
+  ServerToClientEvents,
+} from "@twf/contracts";
 
 const io = new Server<ClientToServerEvents, ServerToClientEvents>();
 
@@ -106,9 +113,14 @@ io.on("connection", (socket) => {
 
 ```ts
 import { io, type Socket } from "socket.io-client";
-import type { ClientToServerEvents, ServerToClientEvents } from "@twf/contracts";
+import type {
+  ClientToServerEvents,
+  ServerToClientEvents,
+} from "@twf/contracts";
 
-const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io("http://localhost:3000");
+const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(
+  "http://localhost:3000",
+);
 
 socket.emit("tierSets:list");
 socket.on("room:state", (state) => {
@@ -148,6 +160,7 @@ socket.on("room:state", (state) => {
 ### Core public models
 
 `room.ts` defines shared primitives and domain models, including:
+
 - Lobby/player identity (`RoomCode`, `ClientId`, `Player`, `Role`)
 - Game lifecycle (`GamePhase`, `VoteValue`, timers, turn state)
 - Public room state (`RoomPublicState`)
@@ -156,11 +169,13 @@ socket.on("room:state", (state) => {
 ## Shared runtime constants and regex
 
 From `codes.ts`:
+
 - `CODE_LENGTH = 4`
 - `MAX_NAME_LENGTH = 18`
 - `LOBBY_CAPACITY = 8`
 
 From `regex.ts`:
+
 - `REGEX.GUID`: UUID v4 matcher
 
 Use these from both client and server to avoid drift.
@@ -180,12 +195,14 @@ Use these from both client and server to avoid drift.
 ### Breaking-change policy
 
 Treat any of the following as breaking:
+
 - Renaming/removing event names
 - Changing payload field names/types
 - Removing exported types/constants
 - Tightening unions in ways existing consumers cannot satisfy
 
 For breaking changes:
+
 - Coordinate frontend and backend updates together
 - Call out migration steps in PR description
 
@@ -209,4 +226,3 @@ For breaking changes:
 
 - Package is currently marked `"private": true` in `package.json`.
 - If you decide to publish externally, remove `private` and establish a release/versioning process first.
-
