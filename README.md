@@ -2,6 +2,10 @@
 
 Shared contract package for TWF client/server communication and public room state.
 
+Supports:
+https://github.com/aaronchenghs/TWF-client
+https://github.com/aaronchenghs/TWF-server
+
 This package defines:
 
 - Socket event names and payload types
