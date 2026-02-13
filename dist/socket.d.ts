@@ -13,6 +13,7 @@ export interface ClientToServerEvents {
     "room:start": (payload: {
         code: RoomCode;
     }) => void;
+    "room:playAgain": () => void;
     "room:close": () => void;
     "tierSets:list": () => void;
     "tierSets:get": (payload: {
@@ -34,6 +35,8 @@ export interface ServerToClientEvents {
     }) => void;
     "room:closed": () => void;
     "room:state": (state: RoomPublicState) => void;
+    "room:playAgainQueued": () => void;
+    "room:playAgainStarted": () => void;
     "room:kicked": () => void;
     "room:error": (message: string) => void;
     "room:joined": (payload: {
