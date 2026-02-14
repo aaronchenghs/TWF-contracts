@@ -1,7 +1,7 @@
-export declare type RoomCode = string;
-export declare type ClientId = string;
-export declare type Role = "host" | "player";
-export declare type RoomJoinPayload = {
+export type RoomCode = string;
+export type ClientId = string;
+export type Role = "host" | "player";
+export type RoomJoinPayload = {
     code: RoomCode;
     role: Role;
     name?: string;
@@ -13,14 +13,14 @@ export interface Player {
     joinedAt: number;
     connected?: boolean;
 }
-export declare type VoteValue = -1 | 0 | 1;
-export declare type GamePhase = "LOBBY" | "STARTING" | "PLACE" | "VOTE" | "RESULTS" | "DRIFT" | "RESOLVE" | "FINISHED";
-export declare type PlayerId = Player["id"];
-export declare type JoinRoomResult = {
+export type VoteValue = -1 | 0 | 1;
+export type GamePhase = "LOBBY" | "STARTING" | "PLACE" | "VOTE" | "RESULTS" | "DRIFT" | "RESOLVE" | "FINISHED";
+export type PlayerId = Player["id"];
+export type JoinRoomResult = {
     resumed: boolean;
     canonicalName?: string;
 };
-export declare type TurnResolution = {
+export type TurnResolution = {
     up: number;
     down: number;
     agree: number;
@@ -38,7 +38,7 @@ export interface RoomTimers {
     resultsEndsAt: number | null;
     driftEndsAt: number | null;
 }
-export declare type VoteMap = Record<PlayerId, VoteValue>;
+export type VoteMap = Record<PlayerId, VoteValue>;
 export interface RoomPublicState {
     code: RoomCode;
     phase: GamePhase;
@@ -91,26 +91,26 @@ export interface RoomPublicState {
         paused?: boolean;
     };
 }
-export declare type TierSetId = string;
-export declare type TierId = string;
-export declare type TierItemId = string;
-export declare type Tier = {
+export type TierSetId = string;
+export type TierId = string;
+export type TierItemId = string;
+export type Tier = {
     id: TierId;
     name: string;
     color: string;
 };
-export declare type TierItem = {
+export type TierItem = {
     id: TierItemId;
     name: string;
     imageSrc: string;
 };
-export declare type TierSetSummary = {
+export type TierSetSummary = {
     id: TierSetId;
     title: string;
     description?: string;
     coverImageSrc?: string;
 };
-export declare type TierSetDefinition = {
+export type TierSetDefinition = {
     id: TierSetId;
     title: string;
     description?: string;
