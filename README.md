@@ -180,6 +180,9 @@ From `codes.ts`:
 - `LOBBY_CAPACITY = 8`
 - `AVATAR_BASE = 36`
 - `AVATAR_PARTS_COUNT = 3`
+- `AVATAR_BODY_COUNT = 18`
+- `AVATAR_MOUTH_COUNT = 9`
+- `AVATAR_EYES_COUNT = 8`
 
 From `regex.ts`:
 
