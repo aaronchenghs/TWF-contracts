@@ -10,9 +10,20 @@ export type RoomJoinPayload = {
   clientId: ClientId;
 };
 
+export type Avatar = `${string}.${string}.${string}`;
+
+export type AvatarPartIndex = number;
+
+export type AvatarParts = {
+  body: AvatarPartIndex;
+  mouth: AvatarPartIndex;
+  eyes: AvatarPartIndex;
+};
+
 export interface Player {
   id: string;
   name: string;
+  avatar: Avatar;
   joinedAt: number;
   connected?: boolean;
 }

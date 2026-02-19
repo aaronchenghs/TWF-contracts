@@ -166,6 +166,7 @@ socket.on("room:state", (state) => {
 `room.ts` defines shared primitives and domain models, including:
 
 - Lobby/player identity (`RoomCode`, `ClientId`, `Player`, `Role`)
+- Player avatar identity (`Avatar`, `AvatarParts`)
 - Game lifecycle (`GamePhase`, `VoteValue`, timers, turn state)
 - Public room state (`RoomPublicState`)
 - Tier set metadata (`TierSetDefinition`, `TierSetSummary`, `Tier`, `TierItem`)
@@ -177,10 +178,13 @@ From `codes.ts`:
 - `CODE_LENGTH = 4`
 - `MAX_NAME_LENGTH = 18`
 - `LOBBY_CAPACITY = 8`
+- `AVATAR_BASE = 36`
+- `AVATAR_PARTS_COUNT = 3`
 
 From `regex.ts`:
 
 - `REGEX.GUID`: UUID v4 matcher
+- `REGEX.AVATAR`: Compact avatar code matcher (`<body>.<mouth>.<eyes>` in base36)
 
 Use these from both client and server to avoid drift.
 

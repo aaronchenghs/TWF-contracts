@@ -1,26 +1,34 @@
-export type RoomCode = string;
-export type ClientId = string;
-export type Role = "host" | "player";
-export type RoomJoinPayload = {
+export declare type RoomCode = string;
+export declare type ClientId = string;
+export declare type Role = "host" | "player";
+export declare type RoomJoinPayload = {
     code: RoomCode;
     role: Role;
     name?: string;
     clientId: ClientId;
 };
+export declare type Avatar = `${string}.${string}.${string}`;
+export declare type AvatarPartIndex = number;
+export declare type AvatarParts = {
+    body: AvatarPartIndex;
+    mouth: AvatarPartIndex;
+    eyes: AvatarPartIndex;
+};
 export interface Player {
     id: string;
     name: string;
+    avatar: Avatar;
     joinedAt: number;
     connected?: boolean;
 }
-export type VoteValue = -1 | 0 | 1;
-export type GamePhase = "LOBBY" | "STARTING" | "PLACE" | "VOTE" | "RESULTS" | "DRIFT" | "RESOLVE" | "FINISHED";
-export type PlayerId = Player["id"];
-export type JoinRoomResult = {
+export declare type VoteValue = -1 | 0 | 1;
+export declare type GamePhase = "LOBBY" | "STARTING" | "PLACE" | "VOTE" | "RESULTS" | "DRIFT" | "RESOLVE" | "FINISHED";
+export declare type PlayerId = Player["id"];
+export declare type JoinRoomResult = {
     resumed: boolean;
     canonicalName?: string;
 };
-export type TurnResolution = {
+export declare type TurnResolution = {
     up: number;
     down: number;
     agree: number;
@@ -38,7 +46,7 @@ export interface RoomTimers {
     resultsEndsAt: number | null;
     driftEndsAt: number | null;
 }
-export type VoteMap = Record<PlayerId, VoteValue>;
+export declare type VoteMap = Record<PlayerId, VoteValue>;
 export interface RoomPublicState {
     code: RoomCode;
     phase: GamePhase;
@@ -91,26 +99,26 @@ export interface RoomPublicState {
         paused?: boolean;
     };
 }
-export type TierSetId = string;
-export type TierId = string;
-export type TierItemId = string;
-export type Tier = {
+export declare type TierSetId = string;
+export declare type TierId = string;
+export declare type TierItemId = string;
+export declare type Tier = {
     id: TierId;
     name: string;
     color: string;
 };
-export type TierItem = {
+export declare type TierItem = {
     id: TierItemId;
     name: string;
     imageSrc: string;
 };
-export type TierSetSummary = {
+export declare type TierSetSummary = {
     id: TierSetId;
     title: string;
     description?: string;
     coverImageSrc?: string;
 };
-export type TierSetDefinition = {
+export declare type TierSetDefinition = {
     id: TierSetId;
     title: string;
     description?: string;
