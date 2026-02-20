@@ -7,5 +7,5 @@ exports.LOBBY_CAPACITY = 8;
 exports.AVATAR_BASE = 36;
 exports.AVATAR_PARTS_COUNT = 3;
 exports.AVATAR_BODY_COUNT = 18;
-exports.AVATAR_MOUTH_COUNT = 9;
-exports.AVATAR_EYES_COUNT = 8;
+exports.AVATAR_MOUTH_COUNT = 10;
+exports.AVATAR_EYES_COUNT = 9;
