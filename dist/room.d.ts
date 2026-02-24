@@ -22,10 +22,10 @@ export interface Player {
     connected?: boolean;
 }
 /**
- * Voting values represent how far the item should drift relative to the placer tier.
- * Negative values drift "up" (toward earlier tiers in tierOrder), positive drift "down".
+ * Voting values represent whether the item should move relative to the placer tier.
+ * Negative values bump "up" (toward earlier tiers in tierOrder), positive bump "down".
  */
-export declare type VoteValue = -2 | -1 | 0 | 1 | 2;
+export declare type VoteValue = -1 | 0 | 1;
 export declare type GamePhase = "LOBBY" | "STARTING" | "PLACE" | "VOTE" | "RESULTS" | "RESOLVE" | "FINISHED";
 export declare type PlayerId = Player["id"];
 export declare type JoinRoomResult = {
@@ -99,11 +99,9 @@ export interface RoomPublicState {
     /**
      * Votes from non-turn players for the currentItem.
      * Convention:
-     *  -2 = drift up 2 tiers
-     *  -1 = drift up 1 tier
-     *   0 = agree/no drift
-     *   1 = drift down 1 tier
-     *   2 = drift down 2 tiers
+     *  -1 = bump up one tier
+     *   0 = agree/no bump
+     *   1 = bump down one tier
      */
     votes: VoteMap;
     /**
