@@ -40,7 +40,6 @@ export type GamePhase =
   | "PLACE"
   | "VOTE"
   | "RESULTS"
-  | "DRIFT"
   | "RESOLVE"
   | "FINISHED";
 
@@ -80,7 +79,6 @@ export interface RoomTimers {
   placeEndsAt: number | null;
   voteEndsAt: number | null;
   resultsEndsAt: number | null;
-  driftEndsAt: number | null;
 }
 
 export type VoteMap = Record<PlayerId, VoteValue>;

@@ -26,7 +26,7 @@ export interface Player {
  * Negative values drift "up" (toward earlier tiers in tierOrder), positive drift "down".
  */
 export declare type VoteValue = -2 | -1 | 0 | 1 | 2;
-export declare type GamePhase = "LOBBY" | "STARTING" | "PLACE" | "VOTE" | "RESULTS" | "DRIFT" | "RESOLVE" | "FINISHED";
+export declare type GamePhase = "LOBBY" | "STARTING" | "PLACE" | "VOTE" | "RESULTS" | "RESOLVE" | "FINISHED";
 export declare type PlayerId = Player["id"];
 export declare type JoinRoomResult = {
     resumed: boolean;
@@ -60,7 +60,6 @@ export interface RoomTimers {
     placeEndsAt: number | null;
     voteEndsAt: number | null;
     resultsEndsAt: number | null;
-    driftEndsAt: number | null;
 }
 export declare type VoteMap = Record<PlayerId, VoteValue>;
 export declare type VoteConfirmations = Record<PlayerId, boolean>;
