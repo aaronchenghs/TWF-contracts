@@ -21,7 +21,11 @@ export interface Player {
     joinedAt: number;
     connected?: boolean;
 }
-export declare type VoteValue = -1 | 0 | 1;
+/**
+ * Voting values represent how far the item should drift relative to the placer tier.
+ * Negative values drift "up" (toward earlier tiers in tierOrder), positive drift "down".
+ */
+export declare type VoteValue = -2 | -1 | 0 | 1 | 2;
 export declare type GamePhase = "LOBBY" | "STARTING" | "PLACE" | "VOTE" | "RESULTS" | "DRIFT" | "RESOLVE" | "FINISHED";
 export declare type PlayerId = Player["id"];
 export declare type JoinRoomResult = {
@@ -29,15 +33,27 @@ export declare type JoinRoomResult = {
     canonicalName?: string;
 };
 export declare type TurnResolution = {
-    up: number;
-    down: number;
-    agree: number;
+    counts: {
+        up2: number;
+        up1: number;
+        agree: number;
+        down1: number;
+        down2: number;
+    };
+    /** Players who cast a vote (excluding missing/abstain). */
     voters: number;
+    /** Eligible voters at resolution time. */
     eligible: number;
+    /** Signed score used for drift/within-tier placement. */
     score: number;
-    driftDelta: number;
+    /** Requested drift delta before clamping to tier boundaries. */
+    driftDeltaRequested: number;
+    /** Applied drift delta after clamping to tier boundaries. */
+    driftDeltaApplied: number;
     fromTierId: TierId;
     toTierId: TierId;
+    /** Insert position within toTierId (0..toTierLength). */
+    insertIndex: number;
 };
 export interface RoomTimers {
     buildEndsAt: number | null;
@@ -47,6 +63,7 @@ export interface RoomTimers {
     driftEndsAt: number | null;
 }
 export declare type VoteMap = Record<PlayerId, VoteValue>;
+export declare type VoteConfirmations = Record<PlayerId, boolean>;
 export interface RoomPublicState {
     code: RoomCode;
     phase: GamePhase;
@@ -83,11 +100,18 @@ export interface RoomPublicState {
     /**
      * Votes from non-turn players for the currentItem.
      * Convention:
-     *  -1 = drift up
-     *   0 = agree
-     *   1 = drift down
+     *  -2 = drift up 2 tiers
+     *  -1 = drift up 1 tier
+     *   0 = agree/no drift
+     *   1 = drift down 1 tier
+     *   2 = drift down 2 tiers
      */
     votes: VoteMap;
+    /**
+     * Explicit "lock-in" confirmations for the current vote window.
+     * Confirmed votes can no longer be changed and the vote ends early if all eligible voters confirm.
+     */
+    voteConfirmedByPlayerId: VoteConfirmations;
     /**
      * Most recent vote resolution
      */

@@ -1,4 +1,4 @@
-import type { RoomCode, Role, RoomPublicState, TierSetDefinition, TierSetId, TierSetSummary, TierId, VoteValue, RoomJoinPayload, PlayerId } from "./room";
+import type { RoomCode, Role, RoomPublicState, TierSetDefinition, TierSetId, TierSetSummary, TierId, VoteValue, RoomJoinPayload, PlayerId } from "./room.js";
 export interface ClientToServerEvents {
     "room:create": (payload: {
         role: Role;
@@ -25,6 +25,7 @@ export interface ClientToServerEvents {
     "game:vote": (payload: {
         vote: VoteValue;
     }) => void;
+    "game:voteConfirm": () => void;
     "debug:togglePause": () => void;
     "debug:next": () => void;
     "debug:prev": () => void;

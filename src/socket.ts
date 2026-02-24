@@ -9,7 +9,7 @@ import type {
   VoteValue,
   RoomJoinPayload,
   PlayerId,
-} from "./room";
+} from "./room.js";
 
 export interface ClientToServerEvents {
   "room:create": (payload: { role: Role }) => void;
@@ -25,6 +25,7 @@ export interface ClientToServerEvents {
 
   "game:place": (payload: { tierId: TierId }) => void;
   "game:vote": (payload: { vote: VoteValue }) => void;
+  "game:voteConfirm": () => void;
 
   "debug:togglePause": () => void;
   "debug:next": () => void;
