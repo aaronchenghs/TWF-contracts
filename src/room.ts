@@ -168,6 +168,7 @@ export type TierSetSummary = {
   title: string;
   description?: string;
   coverImageSrc?: string;
+  itemCount: number;
   firstItemName?: string;
   firstItemImageSrc?: string;
 };
