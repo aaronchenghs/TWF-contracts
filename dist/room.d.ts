@@ -138,6 +138,8 @@ export declare type TierSetSummary = {
     title: string;
     description?: string;
     coverImageSrc?: string;
+    firstItemName?: string;
+    firstItemImageSrc?: string;
 };
 export declare type TierSetDefinition = {
     id: TierSetId;
