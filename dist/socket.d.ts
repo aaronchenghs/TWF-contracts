@@ -13,6 +13,7 @@ export interface ClientToServerEvents {
     "room:start": (payload: {
         code: RoomCode;
     }) => void;
+    "room:leave": () => void;
     "room:playAgain": () => void;
     "room:close": () => void;
     "tierSets:list": () => void;

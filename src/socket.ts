@@ -17,6 +17,7 @@ export interface ClientToServerEvents {
   "room:setTierSet": (payload: { tierSetId: TierSetId }) => void;
   "room:bootPlayerFromLobby": (payload: { playerId: PlayerId }) => void;
   "room:start": (payload: { code: RoomCode }) => void;
+  "room:leave": () => void;
   "room:playAgain": () => void;
   "room:close": () => void;
 
