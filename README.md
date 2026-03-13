@@ -238,3 +238,14 @@ For breaking changes:
 
 - Package is currently marked `"private": true` in `package.json`.
 - If you decide to publish externally, remove `private` and establish a release/versioning process first.
+
+## License
+
+This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).
+See the LICENSE file for details.
+
+## Branding Notice
+
+"Tiers! With Friends" and its associated name, logo, and branding are not granted under this repository's software license.
+
+No permission is granted to use the project name, branding, or visual identity without explicit written permission from Aaron Raphael Cheng.
