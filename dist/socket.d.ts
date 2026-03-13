@@ -27,6 +27,7 @@ export interface ClientToServerEvents {
         vote: VoteValue;
     }) => void;
     "game:voteConfirm": () => void;
+    "game:voteUnlock": () => void;
     "debug:togglePause": () => void;
     "debug:next": () => void;
     "debug:prev": () => void;
