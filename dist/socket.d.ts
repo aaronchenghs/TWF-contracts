@@ -23,6 +23,7 @@ export interface ClientToServerEvents {
     "game:place": (payload: {
         tierId: TierId;
     }) => void;
+    "game:pass": () => void;
     "game:vote": (payload: {
         vote: VoteValue;
     }) => void;

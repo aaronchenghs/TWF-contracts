@@ -145,6 +145,7 @@ socket.on("room:state", (state) => {
 - `tierSets:list` `()`
 - `tierSets:get` `{ id: TierSetId }`
 - `game:place` `{ tierId: TierId }`
+- `game:pass` `()`
 - `game:vote` `{ vote: VoteValue }`
 - `debug:togglePause` `()`
 - `debug:next` `()`
