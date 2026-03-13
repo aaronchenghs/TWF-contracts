@@ -63,11 +63,16 @@ export interface RoomTimers {
 }
 export declare type VoteMap = Record<PlayerId, VoteValue>;
 export declare type VoteConfirmations = Record<PlayerId, boolean>;
+export interface GameSettings {
+    unlimitedVotingTime: boolean;
+    unlimitedPlacingTime: boolean;
+}
 export interface RoomPublicState {
     code: RoomCode;
     phase: GamePhase;
     players: Player[];
     timers: RoomTimers;
+    gameSettings: GameSettings;
     tierSetId: TierSetId | null;
     /** Keeps track of items placed in tiers */
     tiers: Record<TierId, TierItemId[]>;
