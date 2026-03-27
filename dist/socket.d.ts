@@ -4,6 +4,9 @@ export interface ClientToServerEvents {
         role: Role;
     }) => void;
     "room:join": (payload: RoomJoinPayload) => void;
+    "room:setPlayerName": (payload: {
+        name: string;
+    }) => void;
     "room:setTierSet": (payload: {
         tierSetId: TierSetId;
     }) => void;
