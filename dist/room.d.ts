@@ -63,7 +63,15 @@ export interface RoomTimers {
 }
 export declare type VoteMap = Record<PlayerId, VoteValue>;
 export declare type VoteConfirmations = Record<PlayerId, boolean>;
+export declare const PLACING_TIME_LIMIT_OPTIONS: readonly [20, 30, 45, null];
+export declare type PlacingTimeLimitSeconds = (typeof PLACING_TIME_LIMIT_OPTIONS)[number];
+export declare const VOTING_TIME_LIMIT_OPTIONS: readonly [45, 60, 120, null];
+export declare type VotingTimeLimitSeconds = (typeof VOTING_TIME_LIMIT_OPTIONS)[number];
+export declare const DEFAULT_PLACING_TIME_LIMIT_SECONDS: Exclude<PlacingTimeLimitSeconds, null>;
+export declare const DEFAULT_VOTING_TIME_LIMIT_SECONDS: Exclude<VotingTimeLimitSeconds, null>;
 export interface GameSettings {
+    placingTimeLimitSeconds: PlacingTimeLimitSeconds;
+    votingTimeLimitSeconds: VotingTimeLimitSeconds;
     unlimitedVotingTime: boolean;
     unlimitedPlacingTime: boolean;
 }

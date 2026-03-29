@@ -10,4 +10,17 @@ by the Free Software Foundation, either version 3 of the License, or
 
 See the LICENSE file for details.
 */
-export {};
+export const PLACING_TIME_LIMIT_OPTIONS = [
+    20,
+    30,
+    45,
+    null,
+];
+export const VOTING_TIME_LIMIT_OPTIONS = [
+    45,
+    60,
+    120,
+    null,
+];
+export const DEFAULT_PLACING_TIME_LIMIT_SECONDS = 30;
+export const DEFAULT_VOTING_TIME_LIMIT_SECONDS = 60;
