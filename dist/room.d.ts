@@ -74,6 +74,7 @@ export interface GameSettings {
     votingTimeLimitSeconds: VotingTimeLimitSeconds;
     unlimitedVotingTime: boolean;
     unlimitedPlacingTime: boolean;
+    showItemNames: boolean;
 }
 export interface RoomPublicState {
     code: RoomCode;
